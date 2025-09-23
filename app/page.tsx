@@ -1,36 +1,12 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { MessageCircle, Phone, MapPin, Factory, Award, Clock } from "lucide-react"
+import { Mail, Phone, MapPin, Factory, Award, Clock } from "lucide-react"
 import Link from "next/link"
 
 export default function HomePage() {
-  const handleWhatsAppSubmit = () => {
-    const nome = (document.querySelector('input[placeholder="Seu nome completo"]') as HTMLInputElement)?.value || ""
-    const empresa = (document.querySelector('input[placeholder="Nome da empresa"]') as HTMLInputElement)?.value || ""
-    const whatsapp = (document.querySelector('input[placeholder="(16) 99999-9999"]') as HTMLInputElement)?.value || ""
-    const produto =
-      (document.querySelector('input[placeholder="Ex: Vazadores para facas de sapato"]') as HTMLInputElement)?.value ||
-      ""
-    const mensagem = (document.querySelector("textarea") as HTMLTextAreaElement)?.value || ""
-
-    const textoCompleto = `*Solicitação de Orçamento - Pontaço Vazadores*
-
-*Nome:* ${nome}
-*Empresa:* ${empresa}
-*WhatsApp:* ${whatsapp}
-*Produto de Interesse:* ${produto}
-*Mensagem:* ${mensagem}`
-
-    const numeroWhatsApp = "5516991279293"
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoCompleto)}`
-    window.open(url, "_blank")
-  }
-
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -97,12 +73,8 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-4 h-auto font-semibold shadow-lg"
-                onClick={() => {
-                  const url = `https://wa.me/5516991279293?text=${encodeURIComponent("Olá! Gostaria de solicitar um orçamento para produtos da Pontaço Vazadores.")}`
-                  window.open(url, "_blank")
-                }}
               >
-                <MessageCircle className="mr-3 h-5 w-5" />
+                <Mail className="mr-3 h-5 w-5" />
                 Solicitar Orçamento
               </Button>
               <Link href="/produtos">
@@ -330,17 +302,17 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <MessageCircle className="h-5 w-5 text-primary" />
-                  <div>
-                    <p className="font-medium">WhatsApp</p>
-                    <p className="text-muted-foreground">(16) 99127-9293</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">Telefone</p>
                     <p className="text-muted-foreground">(16) 99127-9293</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Mail className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="font-medium">E-mail</p>
+                    <p className="text-muted-foreground">pontaco.vazadores@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -391,7 +363,7 @@ export default function HomePage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl">Solicite um Orçamento</CardTitle>
-                <CardDescription>Preencha o formulário abaixo e enviaremos via WhatsApp.</CardDescription>
+                <CardDescription>Preencha o formulário abaixo e entraremos em contato em breve.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -406,13 +378,17 @@ export default function HomePage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium mb-2 block">WhatsApp</label>
-                    <Input placeholder="(16) 99999-9999" />
+                    <label className="text-sm font-medium mb-2 block">E-mail</label>
+                    <Input type="email" placeholder="seu@email.com" />
                   </div>
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Produto de Interesse</label>
-                    <Input placeholder="Ex: Vazadores para facas de sapato" />
+                    <label className="text-sm font-medium mb-2 block">Telefone</label>
+                    <Input placeholder="(11) 99999-9999" />
                   </div>
+                </div>
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Produto de Interesse</label>
+                  <Input placeholder="Ex: Vazadores para facas de sapato" />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-2 block">Mensagem</label>
@@ -421,9 +397,9 @@ export default function HomePage() {
                     rows={4}
                   />
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleWhatsAppSubmit}>
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Enviar via WhatsApp
+                <Button className="w-full bg-primary hover:bg-primary/90">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Enviar Solicitação
                 </Button>
               </CardContent>
             </Card>
