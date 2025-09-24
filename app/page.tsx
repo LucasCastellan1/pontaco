@@ -1,12 +1,40 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Factory, Award, Clock } from "lucide-react"
+import { MessageCircle, Phone, MapPin, Factory, Award, Clock, Menu, X } from "lucide-react"
 import Link from "next/link"
+import { useState } from "react"
 
 export default function HomePage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const handleWhatsAppSubmit = () => {
+    const nome = (document.querySelector('input[placeholder="Seu nome completo"]') as HTMLInputElement)?.value || ""
+    const empresa = (document.querySelector('input[placeholder="Nome da empresa"]') as HTMLInputElement)?.value || ""
+    const whatsapp = (document.querySelector('input[placeholder="(16) 99999-9999"]') as HTMLInputElement)?.value || ""
+    const produto =
+      (document.querySelector('input[placeholder="Ex: Vazadores para facas de sapato"]') as HTMLInputElement)?.value ||
+      ""
+    const mensagem = (document.querySelector("textarea") as HTMLTextAreaElement)?.value || ""
+
+    const textoCompleto = `*Solicitação de Orçamento - Pontaço Vazadores*\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*WhatsApp:* ${whatsapp}\n*Produto de Interesse:* ${produto}\n*Mensagem:* ${mensagem}`
+
+    const numeroWhatsApp = "5516991279293"
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoCompleto)}`
+    window.open(url, "_blank")
+  }
+
+  const handleFloatingWhatsApp = () => {
+    const numeroWhatsApp = "5516991279293"
+    const mensagem = "Olá! Gostaria de solicitar informações sobre os produtos da Pontaço Vazadores."
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`
+    window.open(url, "_blank")
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -14,12 +42,18 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img src="/images/logo-pontaco.jpeg" alt="Logo Pontaço Vazadores" className="h-12 w-12 object-contain" />
+              {/* Adicionando logo maior ao lado do título no header */}
+              <img
+                src="/images/logo-pontaco-novo.png"
+                alt="Logo Metalúrgica Pontaço"
+                className="h-12 w-auto object-contain"
+              />
               <div>
                 <h1 className="text-2xl font-bold text-primary">Pontaço Vazadores</h1>
                 <p className="text-sm text-muted-foreground">Metalúrgica Especializada</p>
               </div>
             </div>
+
             <nav className="hidden md:flex space-x-6">
               <a href="#inicio" className="text-foreground hover:text-primary transition-colors">
                 Início
@@ -34,19 +68,70 @@ export default function HomePage() {
                 Contato
               </a>
             </nav>
+
+            <button
+              className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
+
+          {isMenuOpen && (
+            <nav className="md:hidden mt-4 pb-4 border-t pt-4">
+              <div className="flex flex-col space-y-4">
+                <a
+                  href="#inicio"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Início
+                </a>
+                <Link
+                  href="/produtos"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Produtos
+                </Link>
+                <a
+                  href="#sobre"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Sobre Nós
+                </a>
+                <a
+                  href="#contato"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contato
+                </a>
+              </div>
+            </nav>
+          )}
         </div>
       </header>
 
       {/* Hero Section */}
       <section id="inicio" className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-background"></div>
+        <div className="absolute inset-0">
+          <img
+            src="/images/aco-background.jpg"
+            alt="Fundo industrial com peças de aço"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-background/85"></div>
+        </div>
 
         <div className="absolute top-20 right-10 w-32 h-32 border-2 border-primary/20 rotate-45 hidden lg:block"></div>
         <div className="absolute bottom-20 left-10 w-24 h-24 border-2 border-accent/20 rotate-12 hidden lg:block"></div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center text-foreground">
+            {/* Removendo logo do hero section */}
             <Badge
               variant="secondary"
               className="mb-6 bg-primary text-primary-foreground border-primary/30 hover:bg-primary/90"
@@ -73,8 +158,12 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-4 h-auto font-semibold shadow-lg"
+                onClick={() => {
+                  const url = `https://wa.me/5516991279293?text=${encodeURIComponent("Olá! Gostaria de solicitar um orçamento para produtos da Pontaço Vazadores.")}`
+                  window.open(url, "_blank")
+                }}
               >
-                <Mail className="mr-3 h-5 w-5" />
+                <MessageCircle className="mr-3 h-5 w-5" />
                 Solicitar Orçamento
               </Button>
               <Link href="/produtos">
@@ -122,7 +211,7 @@ export default function HomePage() {
             <Card className="overflow-hidden">
               <div className="aspect-square bg-muted relative">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202024-06-18%20at%2010.40.47-MKosZJ2NHyCPSc6BHGhJjXyl6wwP52.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/WhatsApp%20Image%202024-06-18%20at%2010.40.47%281%29-52OOehZr1wnF7oN072Aeo6viKTdAQz.jpeg"
                   alt="Vazadores para facas de sapato com diferentes formatos"
                   className="w-full h-full object-cover"
                 />
@@ -151,7 +240,7 @@ export default function HomePage() {
             <Card className="overflow-hidden">
               <div className="aspect-square bg-muted relative">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202024-06-18%20at%2010.40.47%20%284%29-tjMCIwn5ffbaqRmwyn0cAg23IX0Ir6.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/WhatsApp%20Image%202024-06-18%20at%2010.40.47%20%284%29%281%29-3GeoHcpSabRQ9vE9pO0ZpMwoS1lhzQ.jpeg"
                   alt="Pinos mola para matrizes de diferentes tamanhos"
                   className="w-full h-full object-cover"
                 />
@@ -180,7 +269,7 @@ export default function HomePage() {
             <Card className="overflow-hidden">
               <div className="aspect-square bg-muted relative">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202024-06-18%20at%2010.40.47%20%281%29-NbAGsYLCao3RSEM4fjnW2sk2SJ483g.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/WhatsApp%20Image%202024-06-18%20at%2010.40.47%20%281%29%281%29-fGLVoXLx3bb5ZIk29cNm4v4dwrOMsc.jpeg"
                   alt="Matrizes de frequência com diferentes especificações"
                   className="w-full h-full object-cover"
                 />
@@ -211,21 +300,21 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="aspect-square bg-muted rounded-lg overflow-hidden">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202024-06-18%20at%2010.40.46%20%281%29-mYwRAJPdsAsIscvVU73YpBiJ3NtdpB.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/WhatsApp%20Image%202024-06-18%20at%2010.40.46%20%281%29%281%29-SnBbmJhvFGSpUZyvVmxTKwLe6q9IHz.jpeg"
                   alt="Pinos mola com hastes douradas e bases cilíndricas"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="aspect-square bg-muted rounded-lg overflow-hidden">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202024-06-18%20at%2010.40.46%20%282%29-Cei3lBDHg8WaQy0wQBiB6NLEEWiBDS.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/WhatsApp%20Image%202024-06-18%20at%2010.40.46%20%282%29%281%29-MaqnWzimkElN20qrcmNNJ3gacM4A9W.jpeg"
                   alt="Pinos mola de diferentes tamanhos e acabamentos"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="aspect-square bg-muted rounded-lg overflow-hidden">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202024-06-18%20at%2010.40.46-ame3pYCTqUeZzm1Xig15R8a54mbYTX.jpeg"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/WhatsApp%20Image%202024-06-18%20at%2010.40.46%281%29-GdI4lU390zQIiem6J9xZLgOojXshQL.jpeg"
                   alt="Pinos mola com hastes claras e bases escuras"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
@@ -302,17 +391,17 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-primary" />
+                  <MessageCircle className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="font-medium">Telefone</p>
+                    <p className="font-medium">WhatsApp</p>
                     <p className="text-muted-foreground">(16) 99127-9293</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 text-primary" />
+                  <Phone className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="font-medium">E-mail</p>
-                    <p className="text-muted-foreground">pontaco.vazadores@gmail.com</p>
+                    <p className="font-medium">Telefone</p>
+                    <p className="text-muted-foreground">(16) 99127-9293</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -342,7 +431,7 @@ export default function HomePage() {
               <CardContent className="p-0">
                 <div className="aspect-video w-full">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.8!2d-47.4!3d-20.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDMwJzAwLjAiUyA0N8KwMjQnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.8!2d-47.4!3d-20.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDMwJjAwLjAiUyA0N8KwMjQnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -363,7 +452,7 @@ export default function HomePage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl">Solicite um Orçamento</CardTitle>
-                <CardDescription>Preencha o formulário abaixo e entraremos em contato em breve.</CardDescription>
+                <CardDescription>Preencha o formulário abaixo e enviaremos via WhatsApp.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -378,17 +467,13 @@ export default function HomePage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium mb-2 block">E-mail</label>
-                    <Input type="email" placeholder="seu@email.com" />
+                    <label className="text-sm font-medium mb-2 block">WhatsApp</label>
+                    <Input placeholder="(16) 99999-9999" />
                   </div>
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Telefone</label>
-                    <Input placeholder="(11) 99999-9999" />
+                    <label className="text-sm font-medium mb-2 block">Produto de Interesse</label>
+                    <Input placeholder="Ex: Vazadores para facas de sapato" />
                   </div>
-                </div>
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Produto de Interesse</label>
-                  <Input placeholder="Ex: Vazadores para facas de sapato" />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-2 block">Mensagem</label>
@@ -397,9 +482,9 @@ export default function HomePage() {
                     rows={4}
                   />
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Enviar Solicitação
+                <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleWhatsAppSubmit}>
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Enviar via WhatsApp
                 </Button>
               </CardContent>
             </Card>
@@ -442,6 +527,15 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      <button
+        onClick={handleFloatingWhatsApp}
+        className="whatsapp-float fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-3 shadow-lg hover:bg-green-600 transition-all duration-300"
+        title="Fale conosco no WhatsApp"
+        aria-label="Abrir WhatsApp"
+      >
+        <MessageCircle size={24} />
+      </button>
     </div>
   )
 }

@@ -4,75 +4,75 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Voltando para a paleta de cores original cinza profissional */
-  --background: #ffffff;
-  --foreground: #374151;
-  --card: #ffffff;
-  --card-foreground: #374151;
-  --popover: #ffffff;
-  --popover-foreground: #374151;
-  --primary: #374151;
-  --primary-foreground: #ffffff;
-  --secondary: #f3f4f6;
-  --secondary-foreground: #374151;
-  --muted: #f9fafb;
-  --muted-foreground: #6b7280;
-  --accent: #6366f1;
-  --accent-foreground: #ffffff;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #e5e7eb;
-  --input: #ffffff;
-  --ring: #6366f1;
-  --chart-1: #374151;
-  --chart-2: #6366f1;
-  --chart-3: #10b981;
-  --chart-4: #f59e0b;
-  --chart-5: #ef4444;
+  /* Nova paleta de cores azul profissional */
+  --background: #ffffff; /* Branco */
+  --foreground: #0a2540; /* Azul escuro profundo */
+  --card: #ffffff; /* Branco */
+  --card-foreground: #0a2540; /* Azul escuro profundo */
+  --popover: #ffffff; /* Branco */
+  --popover-foreground: #0a2540; /* Azul escuro profundo */
+  --primary: #3e74b7; /* Azul personalizado */
+  --primary-foreground: #ffffff; /* Branco */
+  --secondary: #f3f4f6; /* Cinza muito claro */
+  --secondary-foreground: #0a2540; /* Azul escuro profundo */
+  --muted: #f3f4f6; /* Cinza muito claro */
+  --muted-foreground: #9ca3af; /* Cinza neutro */
+  --accent: #3e74b7; /* Azul personalizado */
+  --accent-foreground: #ffffff; /* Branco */
+  --destructive: #dc2626; /* Vermelho para erros */
+  --destructive-foreground: #ffffff; /* Branco */
+  --border: #e5e7eb; /* Cinza claro para bordas */
+  --input: #ffffff; /* Branco */
+  --ring: #3e74b7; /* Azul personalizado */
+  --chart-1: #3e74b7; /* Azul personalizado */
+  --chart-2: #0a2540; /* Azul escuro profundo */
+  --chart-3: #9ca3af; /* Cinza neutro */
+  --chart-4: #f3f4f6; /* Cinza muito claro */
+  --chart-5: #ffffff; /* Branco */
   --radius: 0.5rem;
-  --sidebar: #f9fafb;
-  --sidebar-foreground: #374151;
-  --sidebar-primary: #374151;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #6366f1;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #e5e7eb;
-  --sidebar-ring: #6366f1;
+  --sidebar: #f3f4f6; /* Cinza muito claro */
+  --sidebar-foreground: #0a2540; /* Azul escuro profundo */
+  --sidebar-primary: #3e74b7; /* Azul personalizado */
+  --sidebar-primary-foreground: #ffffff; /* Branco */
+  --sidebar-accent: #3e74b7; /* Azul personalizado */
+  --sidebar-accent-foreground: #ffffff; /* Branco */
+  --sidebar-border: #e5e7eb; /* Cinza claro para bordas */
+  --sidebar-ring: #3e74b7; /* Azul personalizado */
 }
 
 .dark {
-  --background: #111827;
-  --foreground: #f9fafb;
-  --card: #1f2937;
-  --card-foreground: #f9fafb;
-  --popover: #1f2937;
-  --popover-foreground: #f9fafb;
-  --primary: #f9fafb;
-  --primary-foreground: #111827;
+  --background: #0a2540;
+  --foreground: #ffffff;
+  --card: #1e3a8a;
+  --card-foreground: #ffffff;
+  --popover: #1e3a8a;
+  --popover-foreground: #ffffff;
+  --primary: #3e74b7;
+  --primary-foreground: #ffffff;
   --secondary: #374151;
-  --secondary-foreground: #f9fafb;
+  --secondary-foreground: #ffffff;
   --muted: #374151;
   --muted-foreground: #9ca3af;
-  --accent: #6366f1;
-  --accent-foreground: #f9fafb;
-  --destructive: #ef4444;
-  --destructive-foreground: #f9fafb;
+  --accent: #3e74b7;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
   --border: #374151;
-  --input: #374151;
-  --ring: #6366f1;
-  --chart-1: #f9fafb;
-  --chart-2: #6366f1;
-  --chart-3: #10b981;
-  --chart-4: #f59e0b;
-  --chart-5: #ef4444;
-  --sidebar: #111827;
-  --sidebar-foreground: #f9fafb;
-  --sidebar-primary: #f9fafb;
-  --sidebar-primary-foreground: #111827;
-  --sidebar-accent: #6366f1;
-  --sidebar-accent-foreground: #f9fafb;
+  --input: #1e3a8a;
+  --ring: #3e74b7;
+  --chart-1: #ffffff;
+  --chart-2: #3e74b7;
+  --chart-3: #9ca3af;
+  --chart-4: #374151;
+  --chart-5: #0a2540;
+  --sidebar: #0a2540;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #0a2540;
+  --sidebar-accent: #3e74b7;
+  --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #374151;
-  --sidebar-ring: #6366f1;
+  --sidebar-ring: #3e74b7;
 }
 
 @theme inline {
@@ -122,5 +122,43 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Adicionando estilos para o botão flutuante do WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+.whatsapp-float:hover {
+  background-color: #128c7e;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 767px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
   }
 }
