@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Factory } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export default function ProdutosPage() {
@@ -12,7 +11,6 @@ export default function ProdutosPage() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img src="/images/logo-pontaco.jpeg" alt="Logo Pontaço Vazadores" className="h-12 w-12 object-contain" />
               <div>
                 <h1 className="text-2xl font-bold text-primary">Pontaço Vazadores</h1>
                 <p className="text-sm text-muted-foreground">Metalúrgica Especializada</p>
@@ -44,15 +42,17 @@ export default function ProdutosPage() {
         </Link>
       </div>
 
-
       <section className="py-20">
         <div className="container mx-auto px-4">
           {/* Categoria 1: Pinos e Vazadores */}
           <div className="mb-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Pinos e Vazadores</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Fabricamos vazadores de alta qualidade para facas, disponíveis em alturas de 19 mm e 32 mm, além de facas gráficas com altura de 23,8 mm. Produzimos também vazadores de saída fundo, com opções em 10 mm, 12 mm, 15 mm, 19 mm, 20 mm e 32 mm. Todas as peças são confeccionadas em aço, passam por processo de têmpera e recebem tratamento especial para garantir maior resistência, precisão e durabilidade no uso.
+              <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
+                Fabricamos vazadores de alta qualidade para facas, disponíveis em alturas de 19 mm e 32 mm, além de
+                facas gráficas com altura de 23,8 mm. Produzimos também vazadores de saída fundo, com opções em 10 mm,
+                12 mm, 15 mm, 19 mm, 20 mm e 32 mm. Todas as peças são confeccionadas em aço, passam por processo de
+                têmpera e recebem tratamento especial para garantir maior resistência, precisão e durabilidade no uso.
               </p>
             </div>
 
@@ -156,8 +156,11 @@ export default function ProdutosPage() {
           <div className="mb-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Pino Mola</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Pino mola são peças indispensáveis para quem busca eficiência e confiabilidade em processos de estamparia e ferramentaria. Desenvolvidos para uso em matrizes convencionais e também em matrizes de frequência, eles oferecem alto desempenho mesmo em aplicações que exigem resistência a impactos repetitivos e temperaturas elevadas. Nossos modelos específicos para matrizes de frequência suportam até 300 °C, garantindo segurança e estabilidade durante toda a operação. Produzidos em materiais de alta qualidade e com rigoroso padrão de fabricação, os pinos mola proporcionam durabilidade, precisão e menor necessidade de manutenção, tornando-se a escolha ideal para empresas que valorizam produtividade e resultados consistentes em seus processos industriais.
+              <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
+                Com alto desempenho em impactos repetitivos e temperaturas elevadas. Os modelos para matrizes de
+                frequência suportam até 300 °C. Fabricados com materiais de qualidade e rigoroso padrão, proporcionam
+                durabilidade, precisão e baixa manutenção, sendo ideais para empresas que buscam produtividade e
+                resultados consistentes.
               </p>
             </div>
 
@@ -246,9 +249,12 @@ export default function ProdutosPage() {
           <div className="mb-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Vazadores Variados e Desenhados</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Fabricamos vazadores e vazadores desenhados de alta qualidade, desenvolvidos para atender tanto aplicações padrão quanto projetos personalizados. Já os vazadores desenhados são produzidos sob medida, de acordo com as especificações e necessidades de cada cliente, garantindo encaixe perfeito e funcionalidade ideal.
-Todas as peças são confeccionadas em aço, passam por têmpera e recebem tratamento especial, assegurando resistência, durabilidade e precisão mesmo em trabalhos mais exigentes. Nossa linha é projetada para oferecer desempenho confiável, eficiência e longa vida útil em aplicações industriais e gráficas.
+              <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
+                Fabricamos vazadores e vazadores desenhados de alta qualidade, ideais para aplicações padrão ou projetos
+                personalizados. Os modelos desenhados são feitos sob medida conforme as necessidades do cliente,
+                garantindo encaixe perfeito e funcionalidade. Produzidos em aço, com têmpera e tratamento especial,
+                oferecem resistência, durabilidade e precisão, assegurando desempenho confiável, eficiência e longa vida
+                útil em aplicações industriais e gráficas.
               </p>
             </div>
 
@@ -360,37 +366,36 @@ Todas as peças são confeccionadas em aço, passam por têmpera e recebem trata
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-12">
+      <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <img src="/images/logo-pontaco.jpeg" alt="Logo Pontaço Vazadores" className="h-6 w-6 object-contain" />
                 <h3 className="text-xl font-bold">Pontaço Vazadores</h3>
               </div>
-              <p className="text-primary-foreground/80">
+              <p className="text-gray-300">
                 30 anos de tradição em metalurgia, oferecendo produtos de alta qualidade e precisão para a indústria.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Produtos</h4>
-              <ul className="space-y-2 text-primary-foreground/80">
+              <h4 className="font-semibold mb-4 text-primary">Produtos</h4>
+              <ul className="space-y-2 text-gray-300">
                 <li>Pinos e Vazadores</li>
                 <li>Pino Mola</li>
                 <li>Vazadores Variados e Desenhados</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Contato</h4>
-              <ul className="space-y-2 text-primary-foreground/80">
+              <h4 className="font-semibold mb-4 text-primary">Contato</h4>
+              <ul className="space-y-2 text-gray-300">
                 <li>pontaco.vazadores@gmail.com</li>
                 <li>(16) 99127-9293</li>
                 <li>Franca - SP, Brasil</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
-            <p className="text-primary-foreground/80">© 2024 Pontaço Vazadores. Todos os direitos reservados.</p>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p className="text-gray-400">© 2025 Pontaço Vazadores. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>

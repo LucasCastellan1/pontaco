@@ -4,27 +4,31 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Nova paleta de cores azul profissional */
+  /* Nova paleta de cores com vermelho #F0141B */
   --background: #ffffff; /* Branco */
   --foreground: #0a2540; /* Azul escuro profundo */
   --card: #ffffff; /* Branco */
   --card-foreground: #0a2540; /* Azul escuro profundo */
   --popover: #ffffff; /* Branco */
   --popover-foreground: #0a2540; /* Azul escuro profundo */
-  --primary: #3e74b7; /* Azul personalizado */
+  /* Voltando para o vermelho anterior #F0141B */
+  --primary: #f0141b; /* Vermelho anterior */
   --primary-foreground: #ffffff; /* Branco */
   --secondary: #f3f4f6; /* Cinza muito claro */
   --secondary-foreground: #0a2540; /* Azul escuro profundo */
   --muted: #f3f4f6; /* Cinza muito claro */
   --muted-foreground: #9ca3af; /* Cinza neutro */
-  --accent: #3e74b7; /* Azul personalizado */
+  /* Accent também usando o vermelho anterior */
+  --accent: #f0141b; /* Vermelho anterior */
   --accent-foreground: #ffffff; /* Branco */
-  --destructive: #dc2626; /* Vermelho para erros */
+  --destructive: #f0141b; /* Vermelho anterior */
   --destructive-foreground: #ffffff; /* Branco */
   --border: #e5e7eb; /* Cinza claro para bordas */
   --input: #ffffff; /* Branco */
-  --ring: #3e74b7; /* Azul personalizado */
-  --chart-1: #3e74b7; /* Azul personalizado */
+  /* Ring usando o vermelho anterior */
+  --ring: #f0141b; /* Vermelho anterior */
+  /* Charts usando o vermelho anterior */
+  --chart-1: #f0141b; /* Vermelho anterior */
   --chart-2: #0a2540; /* Azul escuro profundo */
   --chart-3: #9ca3af; /* Cinza neutro */
   --chart-4: #f3f4f6; /* Cinza muito claro */
@@ -32,12 +36,13 @@
   --radius: 0.5rem;
   --sidebar: #f3f4f6; /* Cinza muito claro */
   --sidebar-foreground: #0a2540; /* Azul escuro profundo */
-  --sidebar-primary: #3e74b7; /* Azul personalizado */
+  /* Sidebar usando o vermelho anterior */
+  --sidebar-primary: #f0141b; /* Vermelho anterior */
   --sidebar-primary-foreground: #ffffff; /* Branco */
-  --sidebar-accent: #3e74b7; /* Azul personalizado */
+  --sidebar-accent: #f0141b; /* Vermelho anterior */
   --sidebar-accent-foreground: #ffffff; /* Branco */
   --sidebar-border: #e5e7eb; /* Cinza claro para bordas */
-  --sidebar-ring: #3e74b7; /* Azul personalizado */
+  --sidebar-ring: #f0141b; /* Vermelho anterior */
 }
 
 .dark {
@@ -47,21 +52,25 @@
   --card-foreground: #ffffff;
   --popover: #1e3a8a;
   --popover-foreground: #ffffff;
-  --primary: #3e74b7;
+  /* Primary no modo escuro usando o vermelho anterior */
+  --primary: #f0141b;
   --primary-foreground: #ffffff;
   --secondary: #374151;
   --secondary-foreground: #ffffff;
   --muted: #374151;
   --muted-foreground: #9ca3af;
-  --accent: #3e74b7;
+  /* Accent no modo escuro usando o vermelho anterior */
+  --accent: #f0141b;
   --accent-foreground: #ffffff;
-  --destructive: #dc2626;
+  --destructive: #f0141b;
   --destructive-foreground: #ffffff;
   --border: #374151;
   --input: #1e3a8a;
-  --ring: #3e74b7;
+  /* Ring no modo escuro usando o vermelho anterior */
+  --ring: #f0141b;
   --chart-1: #ffffff;
-  --chart-2: #3e74b7;
+  /* Chart-2 no modo escuro usando o vermelho anterior */
+  --chart-2: #f0141b;
   --chart-3: #9ca3af;
   --chart-4: #374151;
   --chart-5: #0a2540;
@@ -69,10 +78,11 @@
   --sidebar-foreground: #ffffff;
   --sidebar-primary: #ffffff;
   --sidebar-primary-foreground: #0a2540;
-  --sidebar-accent: #3e74b7;
+  /* Sidebar accent no modo escuro usando o vermelho anterior */
+  --sidebar-accent: #f0141b;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #374151;
-  --sidebar-ring: #3e74b7;
+  --sidebar-ring: #f0141b;
 }
 
 @theme inline {
@@ -161,4 +171,50 @@
     right: 20px;
     font-size: 24px;
   }
+}
+
+/* Adicionando animações para botões */
+.btn-animate {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.btn-animate:hover {
+  transform: translateY(-2px);
+  /* Atualizando sombra dos botões para usar o vermelho anterior */
+  box-shadow: 0 8px 25px rgba(240, 20, 27, 0.3);
+}
+
+.btn-animate:active {
+  transform: translateY(0);
+  transition: all 0.1s ease;
+}
+
+/* Animação para botões outline */
+.btn-outline-animate {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline-animate::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  /* Atualizando gradiente para usar o vermelho anterior */
+  background: linear-gradient(90deg, transparent, rgba(240, 20, 27, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.btn-outline-animate:hover::before {
+  left: 100%;
+}
+
+.btn-outline-animate:hover {
+  transform: translateY(-2px);
+  /* Atualizando sombra dos botões outline para usar o vermelho anterior */
+  box-shadow: 0 8px 25px rgba(240, 20, 27, 0.2);
 }
